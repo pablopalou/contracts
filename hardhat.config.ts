@@ -4,15 +4,15 @@ import hardhatToolboxViemPlugin from "@nomicfoundation/hardhat-toolbox-viem";
 import hardhatVerify from "@nomicfoundation/hardhat-verify";
 import "dotenv/config";
 
-const rpcMainnet = (process.env.MAINNET_ARBITRUM_RPC_URL ?? process.env.ARBITRUM_RPC_URL ?? "").trim();
+// Falls back to the public endpoint so `hardhat compile` / `hardhat test` work without
+// secrets (CI, fresh clones). Mainnet deploy/play scripts should still set a dedicated RPC.
+const PUBLIC_ARBITRUM_RPC = "https://arb1.arbitrum.io/rpc";
+const rpcMainnet = (process.env.MAINNET_ARBITRUM_RPC_URL ?? process.env.ARBITRUM_RPC_URL ?? "").trim() || PUBLIC_ARBITRUM_RPC;
 const privMainnet = (process.env.MAINNET_DEPLOYER_PRIVATE_KEY ?? process.env.DEPLOYER_PRIVATE_KEY ?? "").trim();
-const rpcSepolia = (process.env.ARBITRUM_SEPOLIA_RPC_URL ?? "").trim();
+const PUBLIC_ARBITRUM_SEPOLIA_RPC = "https://sepolia-rollup.arbitrum.io/rpc";
+const rpcSepolia = (process.env.ARBITRUM_SEPOLIA_RPC_URL ?? "").trim() || PUBLIC_ARBITRUM_SEPOLIA_RPC;
 const privSepolia = (process.env.DEPLOYER_PRIVATE_KEY ?? privMainnet).trim();
 const arbiscanKey = (process.env.MAINNET_ARBISCAN_API_KEY ?? process.env.ARBISCAN_API_KEY ?? "").trim();
-
-if (!rpcMainnet) {
-  throw new Error("Missing MAINNET_ARBITRUM_RPC_URL (or ARBITRUM_RPC_URL)");
-}
 
 const config: HardhatUserConfig = {
   plugins: [hardhatToolboxViemPlugin, hardhatVerify],
