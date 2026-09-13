@@ -146,7 +146,7 @@ library BlackjackEngineLib {
     /// @return total best total (hard + 10 when an ace can count 11)
     /// @return soft  whether an ace counts 11 in `total`
     function handValue(uint8[12] memory cards, uint8 count) internal pure returns (uint8 hard, uint8 total, bool soft) {
-        uint8 aces;
+        uint8 aces = 0;
         for (uint8 i = 0; i < count; i++) {
             hard += valueOf(cards[i]);
             if (isAce(cards[i])) aces++;
@@ -413,6 +413,8 @@ library BlackjackEngineLib {
         }
 
         if (st.insuranceTaken && st.dealerNatural) {
+            // Insurance is exactly stake/2 (what addWager collected, floored); paying 3x that amount is intended.
+            // slither-disable-next-line divide-before-multiply
             res.insurancePayout = (input.stake / 2) * 3;
             payout += res.insurancePayout;
         }
