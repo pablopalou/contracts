@@ -5,6 +5,10 @@ libs = ["lib", "node_modules"]
 out = "out"
 cache_path = "cache/foundry"
 solc_version = "0.8.20"
+# Same compiler settings as hardhat.config.ts — without via_ir the platform hits "Stack too deep".
+via_ir = true
+optimizer = true
+optimizer_runs = 200
 remappings = [
   "forge-std/=lib/forge-std/src/",
   "@chainlink/=node_modules/@chainlink/",
