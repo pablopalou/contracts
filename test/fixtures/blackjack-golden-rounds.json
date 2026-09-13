@@ -1,0 +1,3425 @@
+{
+  "rulesVersion": 1,
+  "rulesHash": "0x36eca2df6da74af7315c114e1ce205c0d3b08777e2fed640e37b8aa6f1d8ea56",
+  "generatedBy": "scripts/genGoldenVectors.ts",
+  "vectors": [
+    {
+      "name": "player natural, dealer no natural",
+      "seed": "0xd30853fb1d4d1429f512bf69c4baa0738ef2d39759a81c226e0c2dc20b425f6d",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "2500000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": true,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          37,
+          18
+        ],
+        "dealerTotal": 16,
+        "hands": [
+          {
+            "cards": [
+              13,
+              36
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "blackjack",
+            "payout": "2500000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "player natural vs ace up (insurance declined)",
+      "seed": "0xb8d1ca1b132871f48f0749a1c6ed4e20e19291304d2202cb1e379db750e37bc3",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x05",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "2500000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": true,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          13,
+          0
+        ],
+        "dealerTotal": 12,
+        "hands": [
+          {
+            "cards": [
+              22,
+              0
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "blackjack",
+            "payout": "2500000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "dealer natural with ten up",
+      "seed": "0x67c5e22dbef9777fa76f982d98c85d8fe340c1b219250fc2a773c371a1c32184",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": false,
+        "dealerNatural": true,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          37,
+          26
+        ],
+        "dealerTotal": 21,
+        "hands": [
+          {
+            "cards": [
+              45,
+              42
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "dealer natural with ace up, insurance taken",
+      "seed": "0xf30985db32d793f61208b3c364d5f19c98d4da4562487661d8a1b56bed50fcb8",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x04",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": true
+      },
+      "expected": {
+        "payout": "1500000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": false,
+        "dealerNatural": true,
+        "insuranceTaken": true,
+        "insurancePayout": "1500000000000000000",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          26,
+          48
+        ],
+        "dealerTotal": 21,
+        "hands": [
+          {
+            "cards": [
+              43,
+              42
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "dealer natural with ace up, insurance declined",
+      "seed": "0xb48cd97b2cf48332467f3ada129bd5e9b920b690fe256b200455c90f11b7409f",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x05",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": false,
+        "dealerNatural": true,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          39,
+          36
+        ],
+        "dealerTotal": 21,
+        "hands": [
+          {
+            "cards": [
+              16,
+              38
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "both naturals push",
+      "seed": "0xbc8ac46de28e497fae974860bd6c889dd6c4d88fc31479ddd8ab6c0c4feccb33",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "1000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": true,
+        "dealerNatural": true,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          37,
+          26
+        ],
+        "dealerTotal": 21,
+        "hands": [
+          {
+            "cards": [
+              23,
+              0
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "push",
+            "payout": "1000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ace up, no naturals, insurance taken and lost",
+      "seed": "0x0f9c8becddea7fcd886849f3a4034ce18e762031d35f3b55388f416d4c7639d6",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x0400",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": true
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": true,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          26,
+          19
+        ],
+        "dealerTotal": 18,
+        "hands": [
+          {
+            "cards": [
+              15,
+              48,
+              9
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "bust",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "pair of eights split",
+      "seed": "0x351f7cf2e55a335485b1b3675e040afed147bed0506153442a5e159c852522fd",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x0300000001",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": true,
+        "insured": false
+      },
+      "expected": {
+        "payout": "1000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 10,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "mixed",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          32,
+          46,
+          1
+        ],
+        "dealerTotal": 17,
+        "hands": [
+          {
+            "cards": [
+              46,
+              44,
+              40,
+              34
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "bust",
+            "payout": "0"
+          },
+          {
+            "cards": [
+              33,
+              6,
+              1
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "push",
+            "payout": "1000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "pair of aces split",
+      "seed": "0x2d6e9a5dbf1d49fadd5331216da800d6a0bc2a53e6069fbcf29303622c5db81f",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x03",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": true,
+        "insured": false
+      },
+      "expected": {
+        "payout": "4000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "mixed",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          49,
+          7
+        ],
+        "dealerTotal": 18,
+        "hands": [
+          {
+            "cards": [
+              13,
+              12
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "win",
+            "payout": "2000000000000000000"
+          },
+          {
+            "cards": [
+              39,
+              37
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "win",
+            "payout": "2000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "hard 11 double",
+      "seed": "0xfca2dbe98d53524e99c9f5e49e330ff7e05d54ae675ec731f918ae52a9b3d240",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x02",
+      "abandoned": false,
+      "flags": {
+        "doubled": true,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "4000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          46,
+          32,
+          36
+        ],
+        "dealerTotal": 25,
+        "hands": [
+          {
+            "cards": [
+              8,
+              40,
+              12
+            ],
+            "bet": "2000000000000000000",
+            "outcome": "win",
+            "payout": "4000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "hard 9 double vs 5",
+      "seed": "0xde0514e8c6e393b3d750f9de747002f0c9a9e401acca07f0e7ea123fe660bee5",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          17,
+          24,
+          18
+        ],
+        "dealerTotal": 21,
+        "hands": [
+          {
+            "cards": [
+              0,
+              7
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "soft 19 (A-8) vs 6 doubles",
+      "seed": "0xc70b2be99db12a1e56fc3eed1acdb85c0d3313081779a6594989bba6099446e9",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x02",
+      "abandoned": false,
+      "flags": {
+        "doubled": true,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "4000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          18,
+          23,
+          47
+        ],
+        "dealerTotal": 25,
+        "hands": [
+          {
+            "cards": [
+              33,
+              0,
+              30
+            ],
+            "bet": "2000000000000000000",
+            "outcome": "win",
+            "payout": "4000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "hard 16 vs ten (hits)",
+      "seed": "0x33637c25131f0994e91ff2ab71bb47fb3954e39110e44e88fc86f39af003cf6b",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x00",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          48,
+          14
+        ],
+        "dealerTotal": 12,
+        "hands": [
+          {
+            "cards": [
+              31,
+              38,
+              10
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "bust",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Perfect Pairs perfect",
+      "seed": "0x8b037955c50c39f0d853fd236c01bdd9fa28e380794b298946ad39a5bfab67e0",
+      "stake": "1000000000000000000",
+      "sideBet": "200000000000000000",
+      "actions": "0x0000",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "5200000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "perfect",
+        "sideBetPayout": "5200000000000000000",
+        "dealerCards": [
+          23,
+          48
+        ],
+        "dealerTotal": 20,
+        "hands": [
+          {
+            "cards": [
+              27,
+              27,
+              22,
+              10
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "bust",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Perfect Pairs colored",
+      "seed": "0x31ad38dd0e52e6afead520d5141e398a3051034d5bc0baa05d5af2ebb2a3b31e",
+      "stake": "1000000000000000000",
+      "sideBet": "200000000000000000",
+      "actions": "0x0300010001",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": true,
+        "insured": false
+      },
+      "expected": {
+        "payout": "6600000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 9,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "colored",
+        "sideBetPayout": "2600000000000000000",
+        "dealerCards": [
+          41,
+          11,
+          48
+        ],
+        "dealerTotal": 23,
+        "hands": [
+          {
+            "cards": [
+              31,
+              15,
+              36
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "win",
+            "payout": "2000000000000000000"
+          },
+          {
+            "cards": [
+              18,
+              16,
+              36
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "win",
+            "payout": "2000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Perfect Pairs mixed",
+      "seed": "0x0be1d0032812fcadd90b05f2e86f6e49fc551217e5d4a098837ba683043270ea",
+      "stake": "1000000000000000000",
+      "sideBet": "200000000000000000",
+      "actions": "0x030101",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": true,
+        "insured": false
+      },
+      "expected": {
+        "payout": "1400000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 7,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "mixed",
+        "sideBetPayout": "1400000000000000000",
+        "dealerCards": [
+          30,
+          21,
+          19
+        ],
+        "dealerTotal": 21,
+        "hands": [
+          {
+            "cards": [
+              18,
+              31
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          },
+          {
+            "cards": [
+              5,
+              50
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Perfect Pairs none with side bet",
+      "seed": "0x2aeb3f6b65bc4cf4fef8630a910940c57844000a644ff9b3d320c5cf24fe99e2",
+      "stake": "1000000000000000000",
+      "sideBet": "200000000000000000",
+      "actions": "0x000001",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 7,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          5,
+          18,
+          34
+        ],
+        "dealerTotal": 21,
+        "hands": [
+          {
+            "cards": [
+              29,
+              15,
+              2,
+              48
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "abandoned before any action (auto stand)",
+      "seed": "0xe524b0af34727ca3867a406a92253469ea1626c1b720fc7487f02923f41252b2",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x",
+      "abandoned": true,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "2000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          21,
+          3,
+          41,
+          13
+        ],
+        "dealerTotal": 17,
+        "hands": [
+          {
+            "cards": [
+              34,
+              35
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "win",
+            "payout": "2000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "abandoned in insurance phase (auto decline + stand)",
+      "seed": "0xe605f0f7b3de01ef53b0c8e0625a2d03e0ba8b1e365301447b8f7c2b12aef032",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x",
+      "abandoned": true,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          39,
+          20
+        ],
+        "dealerTotal": 19,
+        "hands": [
+          {
+            "cards": [
+              23,
+              46
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "dealer hits soft 17",
+      "seed": "0x6626d97c0e459b238cc6c35d91e8d104421a3c0d67d99907df2694f8cd6f706e",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          18,
+          26,
+          29
+        ],
+        "dealerTotal": 21,
+        "hands": [
+          {
+            "cards": [
+              49,
+              34
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 0",
+      "seed": "0xb4d69ac34c915c6372c775b7a912855fa6431168f25b487400cb3430af75ed86",
+      "stake": "100000000000000000",
+      "sideBet": "25000000000000000",
+      "actions": "0x00",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "200000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          9,
+          48
+        ],
+        "dealerTotal": 20,
+        "hands": [
+          {
+            "cards": [
+              50,
+              29,
+              6
+            ],
+            "bet": "100000000000000000",
+            "outcome": "win",
+            "payout": "200000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 1",
+      "seed": "0x2de0c1c2771173af04a54dc515ee4bba5f644c4b5bf31c125ea1382d287b454d",
+      "stake": "500000000000000000",
+      "sideBet": "0",
+      "actions": "0x02",
+      "abandoned": false,
+      "flags": {
+        "doubled": true,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "2000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 7,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          2,
+          42,
+          4,
+          23
+        ],
+        "dealerTotal": 22,
+        "hands": [
+          {
+            "cards": [
+              2,
+              20,
+              30
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "win",
+            "payout": "2000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 2",
+      "seed": "0x92a17a7d489016683c5ba627f892c22e4a74554988e01b4491451f822ea86df3",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "2000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          36,
+          46
+        ],
+        "dealerTotal": 18,
+        "hands": [
+          {
+            "cards": [
+              8,
+              9
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "win",
+            "payout": "2000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 3",
+      "seed": "0xd8ba44ff02ae49732683dad8d489b11fc4ecc34ab919b67d9e51ad2d2cfd22ae",
+      "stake": "2000000000000000000",
+      "sideBet": "500000000000000000",
+      "actions": "0x0001",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "4000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          10,
+          45
+        ],
+        "dealerTotal": 17,
+        "hands": [
+          {
+            "cards": [
+              18,
+              0,
+              28
+            ],
+            "bet": "2000000000000000000",
+            "outcome": "win",
+            "payout": "4000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 4",
+      "seed": "0x65c448f705e36a08f0e270e0e1d201eafec89b0beae452436fe1f695530be4e5",
+      "stake": "100000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "200000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          44,
+          23,
+          9
+        ],
+        "dealerTotal": 26,
+        "hands": [
+          {
+            "cards": [
+              41,
+              34
+            ],
+            "bet": "100000000000000000",
+            "outcome": "win",
+            "payout": "200000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 5",
+      "seed": "0xa5080a61db1d5eec2ae1663452f75efcfc40c9929397641415f9afa48b47b00c",
+      "stake": "500000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "500000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          4,
+          35,
+          4
+        ],
+        "dealerTotal": 20,
+        "hands": [
+          {
+            "cards": [
+              13,
+              47
+            ],
+            "bet": "500000000000000000",
+            "outcome": "push",
+            "payout": "500000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 6",
+      "seed": "0x2693df8174c5c9c28f4fa8b9e9d5c1400018229afd98fa1247f6d24409323e95",
+      "stake": "1000000000000000000",
+      "sideBet": "250000000000000000",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          5,
+          18,
+          42,
+          0
+        ],
+        "dealerTotal": 17,
+        "hands": [
+          {
+            "cards": [
+              22,
+              16
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 7",
+      "seed": "0x7844de7f7107d36f9b2446b978961ecc198373af2bb3596aaa8c7fdf0825a067",
+      "stake": "2000000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "4000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          31,
+          1,
+          5,
+          47
+        ],
+        "dealerTotal": 23,
+        "hands": [
+          {
+            "cards": [
+              35,
+              40
+            ],
+            "bet": "2000000000000000000",
+            "outcome": "win",
+            "payout": "4000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 8",
+      "seed": "0xcce9695cec5f3ed760465642368d2120115fd60de2add0358a3b314754c560ea",
+      "stake": "100000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          18,
+          29,
+          39
+        ],
+        "dealerTotal": 21,
+        "hands": [
+          {
+            "cards": [
+              34,
+              35
+            ],
+            "bet": "100000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 9",
+      "seed": "0xba9175a94e725d989a412c70df70d9b0181c1a0a46911f7dd9cbbc0edb1c0595",
+      "stake": "500000000000000000",
+      "sideBet": "125000000000000000",
+      "actions": "0x00000001",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "1000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 8,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          35,
+          18,
+          34
+        ],
+        "dealerTotal": 25,
+        "hands": [
+          {
+            "cards": [
+              14,
+              41,
+              27,
+              4,
+              33
+            ],
+            "bet": "500000000000000000",
+            "outcome": "win",
+            "payout": "1000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 10",
+      "seed": "0xabacf5a471795f64f544223548301f5594df52bfc58f0ab88e95d1065a0fdd95",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "2000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "colored",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          14,
+          36,
+          31
+        ],
+        "dealerTotal": 18,
+        "hands": [
+          {
+            "cards": [
+              51,
+              12
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "win",
+            "payout": "2000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 11",
+      "seed": "0x7c2db0e0017dd91ed0222801b304e5833d0f3083333640ea3f4603d008422de8",
+      "stake": "2000000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "4000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          20,
+          8
+        ],
+        "dealerTotal": 17,
+        "hands": [
+          {
+            "cards": [
+              37,
+              48
+            ],
+            "bet": "2000000000000000000",
+            "outcome": "win",
+            "payout": "4000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 12",
+      "seed": "0xf68a3fa16d4f898d78bc1c137151094d36f3522b1a4c3f90dbc5e2c2ee6a856c",
+      "stake": "100000000000000000",
+      "sideBet": "25000000000000000",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "200000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          17,
+          40,
+          46,
+          25
+        ],
+        "dealerTotal": 25,
+        "hands": [
+          {
+            "cards": [
+              21,
+              9
+            ],
+            "bet": "100000000000000000",
+            "outcome": "win",
+            "payout": "200000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 13",
+      "seed": "0x518d4c888db0f9bcf11d4b9e309deff4d3d32789b88731417b382ce68de259d0",
+      "stake": "500000000000000000",
+      "sideBet": "0",
+      "actions": "0x0001",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          8,
+          37
+        ],
+        "dealerTotal": 19,
+        "hands": [
+          {
+            "cards": [
+              21,
+              45,
+              1
+            ],
+            "bet": "500000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 14",
+      "seed": "0x5b1893b2a8ef1a283840a05f69758672337e66bc63d38bb00d89e3f9373c2d4b",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x0001",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          33,
+          26
+        ],
+        "dealerTotal": 19,
+        "hands": [
+          {
+            "cards": [
+              27,
+              6,
+              46
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 15",
+      "seed": "0xab3df6cb15c1cec697cb842ac74b6c0a13f9fd5430918ce0051dd73d2ea1d4a7",
+      "stake": "2000000000000000000",
+      "sideBet": "500000000000000000",
+      "actions": "0x",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "5000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": true,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          37,
+          50
+        ],
+        "dealerTotal": 20,
+        "hands": [
+          {
+            "cards": [
+              36,
+              26
+            ],
+            "bet": "2000000000000000000",
+            "outcome": "blackjack",
+            "payout": "5000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 16",
+      "seed": "0x6c91c0c1ef219f358d33c53d00c22d2fd1857dd3ec5b6c3c08620a8125cf548e",
+      "stake": "100000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          1,
+          32,
+          36
+        ],
+        "dealerTotal": 19,
+        "hands": [
+          {
+            "cards": [
+              46,
+              23
+            ],
+            "bet": "100000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 17",
+      "seed": "0x384f40162305db23b4a2dd68e2f213fd63ae02e6a3b79042d67978b4a7a32b2d",
+      "stake": "500000000000000000",
+      "sideBet": "0",
+      "actions": "0x02",
+      "abandoned": false,
+      "flags": {
+        "doubled": true,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "2000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "perfect",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          28,
+          33,
+          6
+        ],
+        "dealerTotal": 18,
+        "hands": [
+          {
+            "cards": [
+              30,
+              30,
+              38
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "win",
+            "payout": "2000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 18",
+      "seed": "0x8f95b4f9e8868212d724e8025d636776be6df0dd4623fd849e3c7bec6eefb08e",
+      "stake": "1000000000000000000",
+      "sideBet": "250000000000000000",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "2000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          44,
+          21,
+          50
+        ],
+        "dealerTotal": 25,
+        "hands": [
+          {
+            "cards": [
+              23,
+              27
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "win",
+            "payout": "2000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 19",
+      "seed": "0x412154af8fcc31f1feeda02ac218d080c5773d9474fc01acbf4baf76ef88a88f",
+      "stake": "2000000000000000000",
+      "sideBet": "0",
+      "actions": "0x0001",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          28,
+          19,
+          20
+        ],
+        "dealerTotal": 18,
+        "hands": [
+          {
+            "cards": [
+              28,
+              0,
+              36
+            ],
+            "bet": "2000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 20",
+      "seed": "0xfae7f93f290b56241dfab9e4d1ff2dc61deb6ac88cdd2805f695bbde0ef635d7",
+      "stake": "100000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "200000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          50,
+          42,
+          8
+        ],
+        "dealerTotal": 23,
+        "hands": [
+          {
+            "cards": [
+              12,
+              45
+            ],
+            "bet": "100000000000000000",
+            "outcome": "win",
+            "payout": "200000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 21",
+      "seed": "0x9bc1bb619d448db037595c2bd397effb231777c5c2939732984209ab5a209dc3",
+      "stake": "500000000000000000",
+      "sideBet": "125000000000000000",
+      "actions": "0x0001",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          24,
+          28,
+          19
+        ],
+        "dealerTotal": 20,
+        "hands": [
+          {
+            "cards": [
+              33,
+              17,
+              29
+            ],
+            "bet": "500000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 22",
+      "seed": "0x9e5214af86504ffe41e9a340149d383804dd31ea02840547f09b03d3d8f94e2d",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          7,
+          9
+        ],
+        "dealerTotal": 18,
+        "hands": [
+          {
+            "cards": [
+              19,
+              49
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 23",
+      "seed": "0x588b30db92a7402c8c0e13cf133e2f6c5032568958315fb9853f245c8a5b2196",
+      "stake": "2000000000000000000",
+      "sideBet": "0",
+      "actions": "0x",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": false,
+        "dealerNatural": true,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          25,
+          0
+        ],
+        "dealerTotal": 21,
+        "hands": [
+          {
+            "cards": [
+              0,
+              18
+            ],
+            "bet": "2000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 24",
+      "seed": "0x5d087d071de68a4089c81f2129f15fc55ba8f47fe467beb9fb9eff58fc832211",
+      "stake": "100000000000000000",
+      "sideBet": "25000000000000000",
+      "actions": "0x",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": false,
+        "dealerNatural": true,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          51,
+          13
+        ],
+        "dealerTotal": 21,
+        "hands": [
+          {
+            "cards": [
+              14,
+              34
+            ],
+            "bet": "100000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 25",
+      "seed": "0xc13f6511a22ed2ac2c4d671736ae874d9f7918b602ac8a852b3cb2a75565f3a5",
+      "stake": "500000000000000000",
+      "sideBet": "0",
+      "actions": "0x",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": false,
+        "dealerNatural": true,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          23,
+          13
+        ],
+        "dealerTotal": 21,
+        "hands": [
+          {
+            "cards": [
+              27,
+              29
+            ],
+            "bet": "500000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 26",
+      "seed": "0x78b0d30ec407a8f2b910999db239712255b02704f2a4a8ceba4a9e174c51cd19",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          28,
+          36,
+          29
+        ],
+        "dealerTotal": 17,
+        "hands": [
+          {
+            "cards": [
+              24,
+              17
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 27",
+      "seed": "0x8da7d6a97d5d7e346313c8b3475cb216986bbaa06a38ae06ac1702ad72b06665",
+      "stake": "2000000000000000000",
+      "sideBet": "500000000000000000",
+      "actions": "0x05",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": false,
+        "dealerNatural": true,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          0,
+          49
+        ],
+        "dealerTotal": 21,
+        "hands": [
+          {
+            "cards": [
+              32,
+              30
+            ],
+            "bet": "2000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 28",
+      "seed": "0x5493708c3333061408c779598edf1a87a5ceab0c2362d46b8ff6af4e7f73eae8",
+      "stake": "100000000000000000",
+      "sideBet": "0",
+      "actions": "0x0001",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "200000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          22,
+          45
+        ],
+        "dealerTotal": 17,
+        "hands": [
+          {
+            "cards": [
+              38,
+              30,
+              3
+            ],
+            "bet": "100000000000000000",
+            "outcome": "win",
+            "payout": "200000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 29",
+      "seed": "0xab7cb57ac18da8efd4dbb95ebd5113186b68100a4721a73219c3fdd728af58d5",
+      "stake": "500000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "1000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          27,
+          42,
+          43,
+          46
+        ],
+        "dealerTotal": 19,
+        "hands": [
+          {
+            "cards": [
+              49,
+              35
+            ],
+            "bet": "500000000000000000",
+            "outcome": "win",
+            "payout": "1000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 30",
+      "seed": "0xcda7fad0249714b5ba6e251534233056fbbe47b6d9e461dfe7b9347d5830d1e4",
+      "stake": "1000000000000000000",
+      "sideBet": "250000000000000000",
+      "actions": "0x00",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "2000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 7,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          45,
+          2,
+          42,
+          46
+        ],
+        "dealerTotal": 22,
+        "hands": [
+          {
+            "cards": [
+              21,
+              2,
+              8
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "win",
+            "payout": "2000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 31",
+      "seed": "0x1cd4d72c458762c5b83c088f7369049b00df2a28270ed0344fe5ad231c380b6f",
+      "stake": "2000000000000000000",
+      "sideBet": "0",
+      "actions": "0x02",
+      "abandoned": false,
+      "flags": {
+        "doubled": true,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 7,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          8,
+          3,
+          0,
+          45
+        ],
+        "dealerTotal": 21,
+        "hands": [
+          {
+            "cards": [
+              17,
+              18,
+              7
+            ],
+            "bet": "4000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 32",
+      "seed": "0x860dbeff499c147dad217a020f092c5b9d06d991c0c35841fc5b360cb7d84086",
+      "stake": "100000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          37,
+          11
+        ],
+        "dealerTotal": 20,
+        "hands": [
+          {
+            "cards": [
+              34,
+              48
+            ],
+            "bet": "100000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 33",
+      "seed": "0x1c5f84e02866532942444d4409389a710407959a976ef3afcc22612a5af5d523",
+      "stake": "500000000000000000",
+      "sideBet": "125000000000000000",
+      "actions": "0x05",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": false,
+        "dealerNatural": true,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          13,
+          22
+        ],
+        "dealerTotal": 21,
+        "hands": [
+          {
+            "cards": [
+              5,
+              9
+            ],
+            "bet": "500000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 34",
+      "seed": "0x07bc0b65e68e6d60f239c28ff51ad64c24f519e5fb2dfe2470749d2edc2ab750",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "2000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          22,
+          15,
+          4
+        ],
+        "dealerTotal": 18,
+        "hands": [
+          {
+            "cards": [
+              34,
+              23
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "win",
+            "payout": "2000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 35",
+      "seed": "0x73e0035316f0a30238db96d062cdb8e9e7aa316052efc7d72a829edd1b70de8a",
+      "stake": "2000000000000000000",
+      "sideBet": "0",
+      "actions": "0x000001",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 8,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          40,
+          27,
+          22,
+          32
+        ],
+        "dealerTotal": 21,
+        "hands": [
+          {
+            "cards": [
+              26,
+              16,
+              14,
+              46
+            ],
+            "bet": "2000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 36",
+      "seed": "0x2bd2966be01bb1682d76bf9a769842a8b64270ab590b1c465dc1b133c0c5019a",
+      "stake": "100000000000000000",
+      "sideBet": "25000000000000000",
+      "actions": "0x0001",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "100000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 7,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          14,
+          15,
+          29,
+          26
+        ],
+        "dealerTotal": 20,
+        "hands": [
+          {
+            "cards": [
+              29,
+              17,
+              39
+            ],
+            "bet": "100000000000000000",
+            "outcome": "push",
+            "payout": "100000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 37",
+      "seed": "0xea01a55b60d913f7703e6c123d762775a0263f23269ebe250b1ee763e34c075d",
+      "stake": "500000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          4,
+          4,
+          26
+        ],
+        "dealerTotal": 21,
+        "hands": [
+          {
+            "cards": [
+              50,
+              47
+            ],
+            "bet": "500000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 38",
+      "seed": "0xb1ad3aac01a106cfe08fcfb8c585b9595279c69fe47723d12152cb2984709553",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": false,
+        "dealerNatural": true,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          50,
+          13
+        ],
+        "dealerTotal": 21,
+        "hands": [
+          {
+            "cards": [
+              10,
+              40
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 39",
+      "seed": "0xefecc4fa3c8ef594868653eed1b874f2b596520bdf18814dba1b09901c9933fb",
+      "stake": "2000000000000000000",
+      "sideBet": "500000000000000000",
+      "actions": "0x0001",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          10,
+          22
+        ],
+        "dealerTotal": 20,
+        "hands": [
+          {
+            "cards": [
+              15,
+              32,
+              19
+            ],
+            "bet": "2000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 40",
+      "seed": "0xff1f00a7b5505d03f6a07896d359a62770baef14b388721bed8ff83e91032b41",
+      "stake": "100000000000000000",
+      "sideBet": "0",
+      "actions": "0x000001",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "100000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          24,
+          36
+        ],
+        "dealerTotal": 20,
+        "hands": [
+          {
+            "cards": [
+              16,
+              39,
+              20,
+              6
+            ],
+            "bet": "100000000000000000",
+            "outcome": "push",
+            "payout": "100000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 41",
+      "seed": "0xfe1c972e9053c00fb59a9bc134714c61766042bcc89e59646c84d1f9e01a6a73",
+      "stake": "500000000000000000",
+      "sideBet": "0",
+      "actions": "0x00",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          12,
+          48
+        ],
+        "dealerTotal": 20,
+        "hands": [
+          {
+            "cards": [
+              20,
+              30,
+              22
+            ],
+            "bet": "500000000000000000",
+            "outcome": "bust",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 42",
+      "seed": "0x96211e7a4ecd1cb0425b3add9c271a2683dacb5c940daf4b95bb080e6ea6b71e",
+      "stake": "1000000000000000000",
+      "sideBet": "250000000000000000",
+      "actions": "0x0001",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          46,
+          0
+        ],
+        "dealerTotal": 19,
+        "hands": [
+          {
+            "cards": [
+              30,
+              14,
+              48
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 43",
+      "seed": "0xdb65ea97aa6aa28beb3b399aa606fb051fbb7b84ebfb9ca1df4e4eba1086d515",
+      "stake": "2000000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          28,
+          45,
+          51
+        ],
+        "dealerTotal": 20,
+        "hands": [
+          {
+            "cards": [
+              13,
+              33
+            ],
+            "bet": "2000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 44",
+      "seed": "0x47b8301f7335a1bad7accf6bb0be761bdceffb9efa09793e0427b6a8bae62f95",
+      "stake": "100000000000000000",
+      "sideBet": "0",
+      "actions": "0x",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "250000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": true,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          31,
+          18
+        ],
+        "dealerTotal": 12,
+        "hands": [
+          {
+            "cards": [
+              23,
+              26
+            ],
+            "bet": "100000000000000000",
+            "outcome": "blackjack",
+            "payout": "250000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 45",
+      "seed": "0x29e23c163431842042ba97992113538e139b6e75e1a81228454e780a8d01d5fe",
+      "stake": "500000000000000000",
+      "sideBet": "125000000000000000",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "4250000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "perfect",
+        "sideBetPayout": "3250000000000000000",
+        "dealerCards": [
+          51,
+          19
+        ],
+        "dealerTotal": 17,
+        "hands": [
+          {
+            "cards": [
+              10,
+              10
+            ],
+            "bet": "500000000000000000",
+            "outcome": "win",
+            "payout": "1000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 46",
+      "seed": "0x214e68863496d01f7f2d8aec7034818eca66163804f20b23f9ec6fc06b61f35f",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "1000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          10,
+          51
+        ],
+        "dealerTotal": 20,
+        "hands": [
+          {
+            "cards": [
+              25,
+              23
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "push",
+            "payout": "1000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 47",
+      "seed": "0x9fa1367e2b87cee0eb9fec559c3736406b4598528122bfb60f19c928b35ac63c",
+      "stake": "2000000000000000000",
+      "sideBet": "0",
+      "actions": "0x",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "5000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 4,
+        "playerNatural": true,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          8,
+          9
+        ],
+        "dealerTotal": 19,
+        "hands": [
+          {
+            "cards": [
+              39,
+              36
+            ],
+            "bet": "2000000000000000000",
+            "outcome": "blackjack",
+            "payout": "5000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 48",
+      "seed": "0x3a9ae5cf473848c8e6268450b2c916a885f0de336607c69a28a4ce46ee0d427c",
+      "stake": "100000000000000000",
+      "sideBet": "25000000000000000",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          42,
+          17,
+          3,
+          45
+        ],
+        "dealerTotal": 20,
+        "hands": [
+          {
+            "cards": [
+              1,
+              37
+            ],
+            "bet": "100000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 49",
+      "seed": "0x83be6213124eda5d16ca3c77c9e0a771869dd705ead699634b377463211b17e9",
+      "stake": "500000000000000000",
+      "sideBet": "0",
+      "actions": "0x00",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          36,
+          19
+        ],
+        "dealerTotal": 17,
+        "hands": [
+          {
+            "cards": [
+              12,
+              1,
+              25
+            ],
+            "bet": "500000000000000000",
+            "outcome": "bust",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 50",
+      "seed": "0x0ceaf94c5601e29cf3a125bbe715bd5990f5632b69b1b245bcbaf71f04424b43",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x00",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          46,
+          23
+        ],
+        "dealerTotal": 18,
+        "hands": [
+          {
+            "cards": [
+              6,
+              47,
+              46
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "bust",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 51",
+      "seed": "0x725a85bbf0d1db352833dd13f806e825b5c07eba3863ab5fdabc5a221a8fc111",
+      "stake": "2000000000000000000",
+      "sideBet": "500000000000000000",
+      "actions": "0x00",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "4000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          28,
+          35,
+          9
+        ],
+        "dealerTotal": 23,
+        "hands": [
+          {
+            "cards": [
+              40,
+              0,
+              20
+            ],
+            "bet": "2000000000000000000",
+            "outcome": "win",
+            "payout": "4000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 52",
+      "seed": "0x0729977c6f1da97ea9e408854ff901c47b34014819295ea8c27ff7fb12f8e9d9",
+      "stake": "100000000000000000",
+      "sideBet": "0",
+      "actions": "0x00",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          7,
+          42
+        ],
+        "dealerTotal": 12,
+        "hands": [
+          {
+            "cards": [
+              9,
+              30,
+              8
+            ],
+            "bet": "100000000000000000",
+            "outcome": "bust",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 53",
+      "seed": "0x9c794859650e46ddefdab9942fc9a3f8f903f3614f745b9d54fe04a7255b2427",
+      "stake": "500000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "1000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          5,
+          6,
+          11
+        ],
+        "dealerTotal": 23,
+        "hands": [
+          {
+            "cards": [
+              6,
+              49
+            ],
+            "bet": "500000000000000000",
+            "outcome": "win",
+            "payout": "1000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 54",
+      "seed": "0xdab0973a276a53b92a05f473ce5ea2f2565c156214a41eadef2ec80e2fffbe57",
+      "stake": "1000000000000000000",
+      "sideBet": "250000000000000000",
+      "actions": "0x0001",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "2000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 5,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          36,
+          7
+        ],
+        "dealerTotal": 18,
+        "hands": [
+          {
+            "cards": [
+              23,
+              31,
+              41
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "win",
+            "payout": "2000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 55",
+      "seed": "0xb788d9ce729ed813655c82788d61227d7edc6012447dbd2052004b3d7ef7c4ed",
+      "stake": "2000000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          42,
+          43,
+          31,
+          44
+        ],
+        "dealerTotal": 21,
+        "hands": [
+          {
+            "cards": [
+              25,
+              41
+            ],
+            "bet": "2000000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 56",
+      "seed": "0x423c9ae2516639471eba6d9fdbc014df73a685b297fda58411197161652c00cc",
+      "stake": "100000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "200000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          15,
+          51,
+          40,
+          7
+        ],
+        "dealerTotal": 23,
+        "hands": [
+          {
+            "cards": [
+              35,
+              42
+            ],
+            "bet": "100000000000000000",
+            "outcome": "win",
+            "payout": "200000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 57",
+      "seed": "0x880735591eb680e407c3d322b96a06182a12576fb497469cdeaff5d81eda8e56",
+      "stake": "500000000000000000",
+      "sideBet": "125000000000000000",
+      "actions": "0x050001",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "0",
+        "wagerRefund": "0",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          26,
+          26,
+          19
+        ],
+        "dealerTotal": 19,
+        "hands": [
+          {
+            "cards": [
+              17,
+              2,
+              12
+            ],
+            "bet": "500000000000000000",
+            "outcome": "lose",
+            "payout": "0"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 58",
+      "seed": "0x671330d671f742a1842bf9e0702b6fdb69523fffed1dea4976a2b7c8256c368c",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x02",
+      "abandoned": false,
+      "flags": {
+        "doubled": true,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "4000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          21,
+          6,
+          21
+        ],
+        "dealerTotal": 25,
+        "hands": [
+          {
+            "cards": [
+              2,
+              20,
+              51
+            ],
+            "bet": "2000000000000000000",
+            "outcome": "win",
+            "payout": "4000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bulk 59",
+      "seed": "0x396a66c5e3ce554fea8acf4c7c2b0ef4ce1c1b7924d24cdcac7674c0173c28e5",
+      "stake": "2000000000000000000",
+      "sideBet": "0",
+      "actions": "0x000001",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": false
+      },
+      "expected": {
+        "payout": "4000000000000000000",
+        "wagerRefund": "0",
+        "cardsDrawn": 7,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          21,
+          6,
+          31
+        ],
+        "dealerTotal": 22,
+        "hands": [
+          {
+            "cards": [
+              0,
+              2,
+              24,
+              2
+            ],
+            "bet": "2000000000000000000",
+            "outcome": "win",
+            "payout": "4000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "unused double + split + insurance refunded",
+      "seed": "0xc37257610a85d00eb95d0d56433256ab37e723565b9a1332b4f85af20d1da325",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": true,
+        "split": true,
+        "insured": true
+      },
+      "expected": {
+        "payout": "4500000000000000000",
+        "wagerRefund": "2500000000000000000",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          4,
+          42,
+          32,
+          20
+        ],
+        "dealerTotal": 24,
+        "hands": [
+          {
+            "cards": [
+              51,
+              29
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "win",
+            "payout": "2000000000000000000"
+          }
+        ]
+      }
+    },
+    {
+      "name": "unused insurance refunded",
+      "seed": "0xc37257610a85d00eb95d0d56433256ab37e723565b9a1332b4f85af20d1da325",
+      "stake": "1000000000000000000",
+      "sideBet": "0",
+      "actions": "0x01",
+      "abandoned": false,
+      "flags": {
+        "doubled": false,
+        "split": false,
+        "insured": true
+      },
+      "expected": {
+        "payout": "2500000000000000000",
+        "wagerRefund": "500000000000000000",
+        "cardsDrawn": 6,
+        "playerNatural": false,
+        "dealerNatural": false,
+        "insuranceTaken": false,
+        "insurancePayout": "0",
+        "sideBetOutcome": "none",
+        "sideBetPayout": "0",
+        "dealerCards": [
+          4,
+          42,
+          32,
+          20
+        ],
+        "dealerTotal": 24,
+        "hands": [
+          {
+            "cards": [
+              51,
+              29
+            ],
+            "bet": "1000000000000000000",
+            "outcome": "win",
+            "payout": "2000000000000000000"
+          }
+        ]
+      }
+    }
+  ]
+}
