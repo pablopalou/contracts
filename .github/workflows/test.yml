@@ -48,6 +48,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: recursive # lib/forge-std, referenced by foundry.toml
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -63,11 +65,15 @@ jobs:
       - name: Install Slither
         run: pip install slither-analyzer==0.10.4
 
-      - name: Install Node dependencies (Slither parses imports)
-        run: npm ci
+      # crytic-compile auto-detects this repo as a Foundry project (foundry.toml) and
+      # compiles through `forge build`; Hardhat 3 artifacts are not readable by it.
+      - name: Install Foundry (Slither compiles with forge)
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: stable
 
-      - name: Compile contracts (Slither reads artifacts)
-        run: npx hardhat compile
+      - name: Install Node dependencies (foundry.toml remaps @openzeppelin/@chainlink to node_modules)
+        run: npm ci
 
       - name: Run Slither
         # --filter-paths skips OpenZeppelin + Chainlink imports + test mocks (not platform code).
