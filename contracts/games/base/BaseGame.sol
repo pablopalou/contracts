@@ -88,6 +88,11 @@ abstract contract BaseGame is Ownable2Step, ReentrancyGuard, Pausable, Multicall
      */
     function _collectBet(address player, uint256 amount) internal {
         _requireNotPaused();
+        // `player` is never arbitrary: direct entries pass msg.sender and the `*For` entries
+        // pass the signer recovered by AuthHub._verifyAndConsume (session key + nonce +
+        // deadline), so tokens can only be pulled from a wallet that approved this game
+        // and authorised this exact bet.
+        // slither-disable-next-line arbitrary-send-erc20
         evaToken.safeTransferFrom(player, address(this), amount);
     }
 
