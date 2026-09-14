@@ -204,11 +204,35 @@ async function main() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (deployerWallet.account as any).nonceManager = nonceManager;
 
-  // Helper: wait for a write tx to be mined before proceeding.
-  // Without this, sequential txs that depend on prior state changes can fail
-  // because the RPC may return stale state if the previous tx isn't mined yet.
-  const waitTx = async (hash: `0x${string}`) => {
-    await publicClient.waitForTransactionReceipt({ hash });
+  // ── Receipt-wait wrapper ─────────────────────────────────────────────────
+  // Hardhat-toolbox-viem v3 creates each contract with its own internal
+  // walletClient — monkey-patching `deployerWallet.writeContract` does NOT
+  // propagate to `contract.write.X(...)` calls. We have to wrap each contract
+  // at the moment it's returned from `viem.deployContract(...)`. The proxy
+  // on `.write` intercepts every method and awaits the receipt before
+  // returning, guaranteeing the chain has applied tx N before tx N+1 reads
+  // its nonce from getTransactionCount.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const _origDeploy = (viem as any).deployContract.bind(viem);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (viem as any).deployContract = async (...args: any[]) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const contract: any = await _origDeploy(...args);
+    if (contract?.write && typeof contract.write === "object") {
+      contract.write = new Proxy(contract.write, {
+        get(target, key) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const fn = (target as any)[key];
+          if (typeof fn !== "function") return fn;
+          return async (...callArgs: unknown[]) => {
+            const hash = (await fn(...callArgs)) as `0x${string}`;
+            await publicClient.waitForTransactionReceipt({ hash });
+            return hash;
+          };
+        },
+      });
+    }
+    return contract;
   };
 
   const deployerBal = await publicClient.getBalance({ address: deployer });
@@ -250,7 +274,7 @@ async function main() {
   ok(`MultiLevelReferral: ${mlr.address}`);
 
   step("Setting MLR levels: " + MLR_LEVELS.join(" / ") + " bps");
-  await waitTx(await mlr.write.setLevels([MLR_LEVELS.length, [...MLR_LEVELS]]));
+  await mlr.write.setLevels([MLR_LEVELS.length, [...MLR_LEVELS]]);
   ok("MLR levels set");
 
   step("Deploying PaymentHandler");
@@ -258,8 +282,8 @@ async function main() {
   ok(`PaymentHandler: ${paymentHandler.address}`);
 
   step("Wiring MLR ↔ PaymentHandler");
-  await waitTx(await mlr.write.setPaymentHandler([paymentHandler.address]));
-  await waitTx(await paymentHandler.write.setReferralContract([mlr.address]));
+  await mlr.write.setPaymentHandler([paymentHandler.address]);
+  await paymentHandler.write.setReferralContract([mlr.address]);
   ok("Wiring done");
 
   // ── 3. RandomProvider (real VRF) ───────────────────────────────────────
@@ -270,8 +294,8 @@ async function main() {
   ok(`RandomProvider: ${randomProvider.address}`);
 
   step("Setting VRF key hash + subscription ID");
-  await waitTx(await randomProvider.write.setKeyHash([env.vrfKeyHash]));
-  await waitTx(await randomProvider.write.setSubscriptionId([env.vrfSubscriptionId]));
+  await randomProvider.write.setKeyHash([env.vrfKeyHash]);
+  await randomProvider.write.setSubscriptionId([env.vrfSubscriptionId]);
   ok("Key hash + subId set");
 
   // ── 4. ProgressiveJackpot ──────────────────────────────────────────────
@@ -286,12 +310,12 @@ async function main() {
   ok(`ProgressiveJackpot: ${pj.address}`);
 
   step("Wiring PJ ↔ PaymentHandler (both directions)");
-  await waitTx(await pj.write.setPaymentHandler([paymentHandler.address]));
-  await waitTx(await paymentHandler.write.setJackpot([pj.address]));
+  await pj.write.setPaymentHandler([paymentHandler.address]);
+  await paymentHandler.write.setJackpot([pj.address]);
   ok("Both directions wired");
 
   step("Registering PJ as a RandomProvider consumer (maxRanges = 1)");
-  await waitTx(await randomProvider.write.setConsumerStatus([pj.address, true, 1n]));
+  await randomProvider.write.setConsumerStatus([pj.address, true, 1n]);
   ok("Consumer registered");
 
   step("Configuring PJ tier ladder (" + PJ_TIER_COUNT + " tiers, fixed " + PJ_TIER_COST + " EVA cost)");
@@ -303,8 +327,8 @@ async function main() {
     useDynamicCost: false,
     costBps: 0,
   }));
-  await waitTx(await pj.write.setTierLadder([tiers]));
-  await waitTx(await pj.write.setAllTierProbConfigs([PJ_PROB_BASE, PJ_PROB_MAX, PJ_PROB_INCREMENT]));
+  await pj.write.setTierLadder([tiers]);
+  await pj.write.setAllTierProbConfigs([PJ_PROB_BASE, PJ_PROB_MAX, PJ_PROB_INCREMENT]);
   ok("Tier ladder + probability config set");
 
   step("Configuring PJ direct-bet outcomes (lose + 2 consolation + 9 tier awards)");
@@ -328,36 +352,38 @@ async function main() {
       awardsTier: true,
     });
   }
-  await waitTx(await pj.write.configureDirectBet([true, directOutcomes]));
-  await waitTx(await pj.write.setDirectFallback([0]));
+  const cdHash = await pj.write.configureDirectBet([true, directOutcomes]);
+  await publicClient.waitForTransactionReceipt({ hash: cdHash });
+  const sdHash = await pj.write.setDirectFallback([0]);
+  await publicClient.waitForTransactionReceipt({ hash: sdHash });
   ok("Direct-bet outcomes configured");
 
   step("Registering PJ as a PaymentHandler game (for direct bets)");
-  await waitTx(await paymentHandler.write.registerGame([
+  await paymentHandler.write.registerGame([
     pj.address,
     pj.address,
     walletAddrs.feeRecipient,
     HOUSE_BPS,
     REFERRAL_BPS,
     JACKPOT_BPS,
-  ]));
-  await waitTx(await authHub.write.setSpendTracker([pj.address, true]));
+  ]);
+  await authHub.write.setSpendTracker([pj.address, true]);
   ok("PJ registered as a game + AuthHub spend tracker");
 
   step("Seeding PJ pots (consolation + " + PJ_TIER_COUNT + " tiers × " + PJ_POT_SEED + " EVA)");
-  // Single approve covers all the seedings — MUST be mined before seed calls (transferFrom)
+  // Single approve covers all the seedings
   const totalSeed = PJ_POT_SEED * BigInt(PJ_TIER_COUNT + 1);
-  await waitTx(await token.write.approve([pj.address, totalSeed]));
-  await waitTx(await pj.write.seedConsolationPot([PJ_POT_SEED]));
+  await token.write.approve([pj.address, totalSeed]);
+  await pj.write.seedConsolationPot([PJ_POT_SEED]);
   for (let i = 0; i < PJ_TIER_COUNT; i++) {
-    await waitTx(await pj.write.seedTierPot([i, PJ_POT_SEED]));
+    await pj.write.seedTierPot([i, PJ_POT_SEED]);
   }
   ok("Pots seeded");
 
   // ── 5. AuthHub operator allowlist ──────────────────────────────────────
   banner("5. AuthHub operator allowlist");
   step("Adding operator wallet to AuthHub allowlist");
-  await waitTx(await authHub.write.setOperator([walletAddrs.operator, true]));
+  await authHub.write.setOperator([walletAddrs.operator, true]);
   ok(`Operator ${walletAddrs.operator} allowlisted`);
 
   // ── 6. Games ──────────────────────────────────────────────────────────
@@ -372,13 +398,13 @@ async function main() {
     authHub.address,
   ]);
   ok(`SingleRandomRoulette: ${roulette.address}`);
-  await waitTx(await randomProvider.write.setConsumerStatus([roulette.address, true, 8n]));
-  await waitTx(await paymentHandler.write.registerGame([
+  await randomProvider.write.setConsumerStatus([roulette.address, true, 8n]);
+  await paymentHandler.write.registerGame([
     roulette.address, roulette.address, walletAddrs.feeRecipient,
     HOUSE_BPS, REFERRAL_BPS, JACKPOT_BPS,
-  ]));
-  await waitTx(await authHub.write.setSpendTracker([roulette.address, true]));
-  await waitTx(await roulette.write.setTableConfig([
+  ]);
+  await authHub.write.setSpendTracker([roulette.address, true]);
+  await roulette.write.setTableConfig([
     {
       enabled: true,
       replayBps: 0,
@@ -388,7 +414,7 @@ async function main() {
       minWager: 0n,
       maxWager: 0n,
     },
-  ]));
+  ]);
   ok("Roulette configured (table enabled, registered, consumer + spend tracker)");
 
   // Register Roulette as a PJ game so jackpot entries route correctly
@@ -401,8 +427,10 @@ async function main() {
       enabled: true, tierAdvance: 1, tierResetTo: 0, consolationMultiplier: 0, awardsTier: true,
     });
   }
-  await waitTx(await pj.write.registerGame([roulette.address, rouletteOutcomes]));
-  await waitTx(await pj.write.setGameFallback([roulette.address, 0]));
+  const rgHash = await pj.write.registerGame([roulette.address, rouletteOutcomes]);
+  await publicClient.waitForTransactionReceipt({ hash: rgHash });
+  const sgfHash = await pj.write.setGameFallback([roulette.address, 0]);
+  await publicClient.waitForTransactionReceipt({ hash: sgfHash });
   ok("Roulette registered on PJ for jackpot entries");
 
   // ── 6b. MultiLineSlots ──
@@ -414,27 +442,27 @@ async function main() {
     authHub.address,
   ]);
   ok(`MultiLineSlots: ${slots.address}`);
-  await waitTx(await randomProvider.write.setConsumerStatus([slots.address, true, 9n]));
-  await waitTx(await paymentHandler.write.registerGame([
+  await randomProvider.write.setConsumerStatus([slots.address, true, 9n]);
+  await paymentHandler.write.registerGame([
     slots.address, slots.address, walletAddrs.feeRecipient,
     HOUSE_BPS, REFERRAL_BPS, JACKPOT_BPS,
-  ]));
-  await waitTx(await authHub.write.setSpendTracker([slots.address, true]));
+  ]);
+  await authHub.write.setSpendTracker([slots.address, true]);
 
   // 4 active symbols (3 normal + 1 wild)
   const sym = (w: number, three: number, two: number, isWild: boolean, enabled: boolean) =>
     ({ weightBps: w, threeMatchPayout: three, twoMatchPayout: two, isWild, enabled });
-  await waitTx(await slots.write.setAllSymbols([[
+  await slots.write.setAllSymbols([[
     sym(2500, 200, 50, false, true),  // S0: 2.0x triple
     sym(2500, 500, 100, false, true), // S1: 5.0x triple
     sym(2500, 1000, 200, false, true), // S2: 10x triple
     sym(2500, 0, 0, true, true),       // S3: wild
     sym(0, 0, 0, false, false), sym(0, 0, 0, false, false),
     sym(0, 0, 0, false, false), sym(0, 0, 0, false, false),
-  ]]));
-  await waitTx(await slots.write.setSlotsConfig([{
+  ]]);
+  await slots.write.setSlotsConfig([{
     enabled: true, activeSymbolCount: 4, minWagerPerLine: 0n, maxWagerPerLine: 0n,
-  }]));
+  }]);
   ok("Slots configured (4 active symbols, table enabled)");
 
   // ── 6c. Plinko ──
@@ -449,16 +477,16 @@ async function main() {
     0n, // maxBet
   ]);
   ok(`Plinko: ${plinko.address}`);
-  await waitTx(await randomProvider.write.setConsumerStatus([plinko.address, true, 1n]));
-  await waitTx(await paymentHandler.write.registerGame([
+  await randomProvider.write.setConsumerStatus([plinko.address, true, 1n]);
+  await paymentHandler.write.registerGame([
     plinko.address, plinko.address, walletAddrs.feeRecipient,
     HOUSE_BPS, REFERRAL_BPS, JACKPOT_BPS,
-  ]));
-  await waitTx(await authHub.write.setSpendTracker([plinko.address, true]));
-  await waitTx(await plinko.write.setAllowedRows([[PLINKO_ROWS]]));
-  await waitTx(await plinko.write.setMultipliers([PLINKO_ROWS, 0, plinkoMultipliers(PLINKO_ROWS, 50)])); // RiskLow
-  await waitTx(await plinko.write.setMultipliers([PLINKO_ROWS, 1, plinkoMultipliers(PLINKO_ROWS, 30)])); // RiskMedium
-  await waitTx(await plinko.write.setMultipliers([PLINKO_ROWS, 2, plinkoMultipliers(PLINKO_ROWS, 20)])); // RiskHigh
+  ]);
+  await authHub.write.setSpendTracker([plinko.address, true]);
+  await plinko.write.setAllowedRows([[PLINKO_ROWS]]);
+  await plinko.write.setMultipliers([PLINKO_ROWS, 0, plinkoMultipliers(PLINKO_ROWS, 50)]); // RiskLow
+  await plinko.write.setMultipliers([PLINKO_ROWS, 1, plinkoMultipliers(PLINKO_ROWS, 30)]); // RiskMedium
+  await plinko.write.setMultipliers([PLINKO_ROWS, 2, plinkoMultipliers(PLINKO_ROWS, 20)]); // RiskHigh
   ok("Plinko configured (rows " + PLINKO_ROWS + ", three risk levels)");
 
   // ── 6d. MinesGameHybrid ──
@@ -475,23 +503,23 @@ async function main() {
     walletAddrs.operator,
   ]);
   ok(`MinesGameHybridV2: ${mines.address}`);
-  await waitTx(await mines.write.setGameOperator([walletAddrs.oracleSigner, true]));
-  await waitTx(await randomProvider.write.setConsumerStatus([mines.address, true, 1n]));
-  await waitTx(await paymentHandler.write.registerGame([
+  await mines.write.setGameOperator([walletAddrs.oracleSigner, true]);
+  await randomProvider.write.setConsumerStatus([mines.address, true, 1n]);
+  await paymentHandler.write.registerGame([
     mines.address, mines.address, walletAddrs.feeRecipient,
     HOUSE_BPS, REFERRAL_BPS, JACKPOT_BPS,
-  ]));
-  await waitTx(await authHub.write.setSpendTracker([mines.address, true]));
-  await waitTx(await mines.write.setTableConfig([{
+  ]);
+  await authHub.write.setSpendTracker([mines.address, true]);
+  await mines.write.setTableConfig([{
     enabled: true,
     minMines: MINES_MIN,
     maxMines: MINES_MAX,
     minWager: 0n,
     maxWager: 0n,
     claimTimeout: MINES_CLAIM_TIMEOUT_SECONDS,
-  }]));
+  }]);
   for (let m = MINES_MIN; m <= MINES_MAX; m++) {
-    await waitTx(await mines.write.setMultiplierTable([m, minesMultiplierTable(m)]));
+    await mines.write.setMultiplierTable([m, minesMultiplierTable(m)]);
   }
   ok("Mines configured (mines range " + MINES_MIN + "-" + MINES_MAX + ", attestation signers: " + walletAddrs.operator + ", " + walletAddrs.oracleSigner + ")");
 
@@ -504,11 +532,11 @@ async function main() {
     walletAddrs.operator,
   ]);
   ok(`PaymentOnlyGameAdapter: ${payAdapter.address}`);
-  await waitTx(await paymentHandler.write.registerGame([
+  await paymentHandler.write.registerGame([
     payAdapter.address, payAdapter.address, walletAddrs.feeRecipient,
     HOUSE_BPS, REFERRAL_BPS, JACKPOT_BPS,
-  ]));
-  await waitTx(await authHub.write.setSpendTracker([payAdapter.address, true]));
+  ]);
+  await authHub.write.setSpendTracker([payAdapter.address, true]);
   ok("PaymentOnlyGameAdapter registered");
 
   // ── 6f. TicketLottery (talks to coordinator DIRECTLY, not via RandomProvider) ──
@@ -536,12 +564,12 @@ async function main() {
     walletAddrs.operator, // initial gameOperator
   ]);
   ok(`CrashGame: ${crash.address}`);
-  await waitTx(await randomProvider.write.setConsumerStatus([crash.address, true, 1n]));
-  await waitTx(await paymentHandler.write.registerGame([
+  await randomProvider.write.setConsumerStatus([crash.address, true, 1n]);
+  await paymentHandler.write.registerGame([
     crash.address, crash.address, walletAddrs.feeRecipient,
     HOUSE_BPS, REFERRAL_BPS, JACKPOT_BPS,
-  ]));
-  await waitTx(await authHub.write.setSpendTracker([crash.address, true]));
+  ]);
+  await authHub.write.setSpendTracker([crash.address, true]);
 
   // Testnet-friendly tuning (defaults are production-shape: 1000 EVA bond, 5 EVA max bet).
   // We mirror what `crash-mainnet.json` uses: 10 EVA bond, 0.1–1 EVA bets, 100 EVA cap per round.
@@ -551,10 +579,10 @@ async function main() {
   //   5_000_000 = 500.0000x (DEFAULT_MAX_MULTIPLIER)
   // The mainnet json description "100.00x" maps to the raw uint32 1_000_000.
   step("Configuring CrashGame (testnet limits)");
-  await waitTx(await crash.write.setBetLimits([parseEther("0.1"), parseEther("1")]));
-  await waitTx(await crash.write.setMaxPayoutPerRound([parseEther("100")]));
-  await waitTx(await crash.write.setMaxMultiplier([1_000_000])); // 100.00x — 4-decimal bps
-  await waitTx(await crash.write.setOperatorBondAmount([parseEther("10")]));
+  await crash.write.setBetLimits([parseEther("0.1"), parseEther("1")]);
+  await crash.write.setMaxPayoutPerRound([parseEther("100")]);
+  await crash.write.setMaxMultiplier([1_000_000]); // 100.00x — 4-decimal bps
+  await crash.write.setOperatorBondAmount([parseEther("10")]);
   ok("CrashGame configured");
 
   // Deposit the operator bond. CrashGame tracks `bond[msg.sender]` per operator
@@ -647,7 +675,7 @@ async function main() {
     ["ProgressiveJackpot", pj],
     ["CrashGame", crash],
   ] as const) {
-    await waitTx(await token.write.transfer([game.address, GAME_BANKROLL]));
+    await token.write.transfer([game.address, GAME_BANKROLL]);
     ok(`Transferred ${parseFloat((Number(GAME_BANKROLL) / 1e18).toFixed(2))} EVA → ${label}`);
   }
 

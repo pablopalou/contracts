@@ -148,6 +148,8 @@ export interface GameContracts {
   paymentOnlyGameAdapter: Addr;
   ticketLottery: Addr;
   crashGame: Addr;
+  /** Optional — absent until deploy-slotstable.ts has run once. */
+  slotsTable?: Addr;
 }
 
 interface BaseDeployment {

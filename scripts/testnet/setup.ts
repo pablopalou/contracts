@@ -36,7 +36,7 @@ type Addr = `0x${string}`;
 
 // ── Funding amounts (Generous tier) ────────────────────────────────────────
 
-const ETH_PER_WALLET = parseEther("0.05");
+const ETH_PER_WALLET = parseEther("0.02");
 const EVA_PER_PLAYER = parseEther("500");
 
 /** Spend cap the session key is authorized for on AuthHub. */

@@ -10,7 +10,12 @@
     "test:coverage": "hardhat test --coverage",
     "test:core": "hardhat test test/core/**/*.test.ts",
     "deploy:arbitrum": "hardhat ignition deploy ignition/modules/Counter.ts --network arbitrum",
-    "deploy:arbitrum-sepolia": "hardhat ignition deploy ignition/modules/Counter.ts --network arbitrumSepolia"
+    "deploy:arbitrum-sepolia": "hardhat ignition deploy ignition/modules/Counter.ts --network arbitrumSepolia",
+    "deploy:slotstable:testnet": "hardhat run scripts/testnet/deploy-slotstable.ts --network arbitrumSepolia",
+    "configure:slotstable:testnet": "hardhat run scripts/testnet/configure-slotstable.ts --network arbitrumSepolia",
+    "deploy:authhub:mainnet": "hardhat run scripts/mainnet/deploy-authhub.ts --network arbitrum",
+    "deploy:slotstable:mainnet": "hardhat run scripts/mainnet/deploy-slotstable.ts --network arbitrum",
+    "configure:slotstable:mainnet": "hardhat run scripts/mainnet/configure-slotstable.ts --network arbitrum"
   },
   "keywords": [],
   "author": "",
